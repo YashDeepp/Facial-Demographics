@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Image Classification</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+
+  <link
+      class="jsbin"
+      href="http://ajax.googleapis.com/ajax/libs/jqueryui/1/themes/base/jquery-ui.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script
+      class="jsbin"
+      src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"
+    ></script>
+    <script
+      class="jsbin"
+      src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.0/jquery-ui.min.js">
+    </script>
+    <style>
+      article,
+      aside,
+      figure,
+      footer,
+      header,
+      hgroup,
+      menu,
+      nav,
+      section {
+        display: block;
+      }
+    </style>
+    <script>
+    function readURL(input) {
+      if (input.files && input.files[0]) {
+        var reader = new FileReader();
+    
+        reader.onload = function (e) {
+          $('#blah').attr('src', e.target.result).height(100);
+        };
+    
+        reader.readAsDataURL(input.files[0]);
+      }
+    }</script>
+</head>
+<body>
+    <div class="row">
+        <div class="col-lg-6">
+            <h1 class="heading">Web Application For Facial Demographics</h1>
+        </div>
+        <div class="col-lg-6">
+            <img src="https://th.bing.com/th/id/OIP.u7Mb071q9HeFsGwzvvPKIQHaFM?pid=ImgDet&rs=1">
+        </div>
+    </div>
+    <section class="sec">
+    <div class="row">
+        <div class="one col-lg-4">
+            <img src="https://cms-assets.tutsplus.com/uploads/users/1802/posts/30091/preview_image/CoreML_Logo.jpg" alt="ML model">
+            <h3>ML MODEL</h3>
+            <p>Using OpenCV we capture the photo of the person from the WebCam. We train the model using UTK Face Dataset. We use CNN Architecture for training the model. The CNN model is applied using Tensorflow.</p>
+        </div>
+        <div class="one col-lg-4">
+            <img src="https://cdn3.iconfinder.com/data/icons/illustricon-tech-ii/512/front-end-512.png"height="270px"width="220px" alt="html/css">
+            <h3>FRONTEND</h3>
+            <p>HTML and CSS is used to design a dynamic and responsive webpage.</p>
+        </div>
+        <div class="one col-lg-4">
+            <img src="https://i1.wp.com/migratory-worker.com/wp-content/uploads/2020/06/icons8-python-480.png?fit=480%2C480&ssl=1" height="270px"width="220px" alt="flask">
+            <h3>BACKEND</h3>
+            <p>Using flask, we integrate the model with the webpage.</p>
+        </div>
+    </div>
+    </section>
+<h1 class="method">METHODLOGY</h1>
+<h3>PYTHON:-</h3>
+<p>Python is an interpreted high-level general-purpose programming language. Its design philosophy emphasizes code readability with its use of significant indentation. Its language constructs as well as its object-oriented approach aim to help programmers write clear, logical code for small and large-scale projects.</p>
+<h3>DEEP LEARNING:-</h3>
+<p>Deep learning is a subset of machine learning, which is essentially a neural network with three or more layers. Deep learning methods are able to leverage very large datasets of faces and learn rich and compact representations of faces, allowing modern models to first perform as-well and later to outperform the face recognition capabilities of humans.In deep learning, a convolutional neural network (CNN) is a special type of neural network that is designed to process data through multiple layers of arrays. A CNN is well-suited for applications like image recognition and is often used in face recognition software.</p>
+<h3>HTML:-</h3>
+<p>HTML is known as HyperText Markup Language. It is a combination of both Hypertext and Markup language. Here hypertext means the link between the web pages and markup is used to define the text document within tag which defines the structure of web pages.Responsive web design is about creating web pages that look good on all devices. A responsive web design will automatically adjust for different screen sizes and viewports.</p>
+<h3>CSS:-</h3>
+<p>CASCADING STYLE SHEETS is a style sheet language used for describing the presentation of a document written in a markup language such as HTML or XML. It describes how HTML elements should be displayed.</p>
+<h3>ReactJS:-</h3>
+<p>React is a JavaScript library for building user interfaces. React is used to build single-page applications. React allows us to create resuable UI components.</p>
+<h3>FLASK:-</h3>
+<p>Flask is a web framework. This means flask provides you with tools, libraries and technologies that allow you to build a web application.  Advantages of using Flask framework are: There is a built-in development server and a fast debugger provided. </p>
+
+<div class="container">
+  <h1 class="jumbotron bg-primary">Image Classfication</h1>
+  <br><br>
+  <form class="form-horizontal" action="{{ url_for('predict')}}" method="post" enctype="multipart/form-data">
+
+   <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Upload Your Image :</label>
+      <div class="col-sm-10">           
+        <input type="file" class="form-control" placeholder="Hours Studied"  name="my_image" id="pwd" onchange="readURL(this);">
+        <img id="blah" src="#" alt="your image" />
+
+      </div>
+    </div>     
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-success">Submit</button>
+      </div>
+    </div>
+  </form>
+  <!-- <script src="index.js"></script> -->
+
+	{% if prediction %}
+  
+      <h6>Age  : <i> {{prediction[0]}} </i></h2>
+      <h6>Gender : <i> {{prediction[1]}} </i></h2>
+      <h6>Emotion : <i> {{prediction[2]}} </i></h2>
+  
+      {% endif %}
+  
+  </div>
+  
+  </body>
+  </html>
+  
